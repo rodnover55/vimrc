@@ -12,10 +12,19 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'yegappan/grep'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'm2mdas/phpcomplete-extended'
-Plugin 'vim-scripts/vim-auto-save'
+"Plugin 'm2mdas/phpcomplete-extended'
+"Plugin 'vim-scripts/vim-auto-save'
 Plugin 'vim-scripts/dbext.vim'
-Plugin 'powerman/vim-plugin-autosess'
+"Plugin 'powerman/vim-plugin-autosess'
+Plugin 'elzr/vim-json'
+Plugin 'joonty/vdebug.git'
+Plugin 'fatih/vim-go'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'fatih/molokai'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 
@@ -27,6 +36,12 @@ let g:projectFolder = "./.vim/"
 let g:projectConfig = "project.vim"
 let g:defautProjectConfig = "~/source/vimrc/default-project.vim"
 let g:phpcomplete_index_composer_command="composer"
+
+let g:molokai_original = 1
+let g:rehash256 = 1
+
+let g:vim_markdown_no_default_key_mappings=1
+let g:vim_markdown_folding_disabled=1
 
 set incsearch
 set smartcase
@@ -55,11 +70,12 @@ map <F3> <ESC>:Unite<CR>
 " Unindent line
 imap <S-Tab> <ESC><<i
 
-map <C-W> :tabclose<CR>
+"map <C-W> :tabclose<CR>
 map <C-T> :tabnew<CR>
 autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 let g:neocomplete#enable_at_startup = 1
 
+command JSONPretty :%!python -m json.tool
 " Autosave
 " let g:auto_save = 1
 " let g:auto_save_in_insert_mode = 0
@@ -73,3 +89,5 @@ if filereadable(g:projectConfig)
     execute "source " . g:defautProjectConfig 
     execute "source " . g:projectFolder . g:projectConfig
 endif
+
+syntax on
